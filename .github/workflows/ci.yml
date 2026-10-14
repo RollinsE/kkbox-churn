@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: python scripts/doctor.py
+      - run: python -m pytest
+      - name: Demo pipeline
+        run: python main.py --mode all --demo --demo_users 2000 --num_leaves 15 --min_data_in_leaf 20 --num_boost_round 300 --catboost_iterations 300

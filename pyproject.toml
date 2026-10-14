@@ -1,0 +1,25 @@
+[project]
+name = "kkbox-churn"
+version = "1.0.0"
+description = "Out-of-time churn prediction pipeline for the Kaggle KKBox challenge."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E501"]  # long log messages and SQL strings; the formatter handles code
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]

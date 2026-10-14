@@ -1,0 +1,4 @@
+labels,logloss,auc,mean_pred
+Official February,0.1718,0.883,0.0543
+Rebuilt February,0.2138,0.853,0.0356
+Rebuilt January + February,0.2123,0.857,0.0334
