@@ -57,7 +57,11 @@ def parse_args(argv=None):
         help="Continue in the latest run directory under --run_base_dir (appends to its run.log).",
     )
 
-    p.add_argument("--raw_dir", default="data/raw", help="Kaggle archives and extracted CSVs (about 40 GB; keep on fast local disk).")
+    p.add_argument(
+        "--raw_dir",
+        default="data/raw",
+        help="Kaggle archives and extracted CSVs (about 40 GB; keep on fast local disk).",
+    )
     p.add_argument("--data_dir", default="data/processed", help="Parquet tables and feature tables.")
     p.add_argument(
         "--engine",
